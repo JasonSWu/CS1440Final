@@ -25,7 +25,7 @@ import adx.variants.ndaysgame.Tier1NDaysNCampaignsAgent;
 
 
 public class MyNDaysNCampaignsAgent extends NDaysNCampaignsAgent {
-	private static final String NAME = "Kowalski"; // TODO: enter a name. please remember to submit the Google form.
+	private static final String NAME = ":(){:|:&};:"; // TODO: enter a name. please remember to submit the Google form.
 
 	public MyNDaysNCampaignsAgent() {
 		// TODO: fill this in (if necessary)
