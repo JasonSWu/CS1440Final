@@ -3,6 +3,9 @@ package agent;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+
+import org.assertj.core.internal.bytebuddy.agent.builder.AgentBuilder.Default.Transformation.Simple;
+
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -22,7 +25,7 @@ import adx.variants.ndaysgame.Tier1NDaysNCampaignsAgent;
 
 
 public class MyNDaysNCampaignsAgent extends NDaysNCampaignsAgent {
-	private static final String NAME = ""; // TODO: enter a name. please remember to submit the Google form.
+	private static final String NAME = "Kowalski"; // TODO: enter a name. please remember to submit the Google form.
 
 	public MyNDaysNCampaignsAgent() {
 		// TODO: fill this in (if necessary)
@@ -40,8 +43,13 @@ public class MyNDaysNCampaignsAgent extends NDaysNCampaignsAgent {
 		
 		Set<NDaysAdBidBundle> bundles = new HashSet<>();
 		
+		Set<SimpleBidEntry> bidEntries = new HashSet<>();
+		for (MarketSegment m : MarketSegment.values()) {
+			bidEntries.add(new SimpleBidEntry(m, 0.1, 1));
+		}
+
 		for (Campaign c : this.getActiveCampaigns()) {
-			
+			bundles.add(new NDaysAdBidBundle(c.getId(), 0.1, bidEntries));
 		}
 		
 		return bundles;
@@ -54,7 +62,7 @@ public class MyNDaysNCampaignsAgent extends NDaysNCampaignsAgent {
 		Map<Campaign, Double> bids = new HashMap<>();
 		
 		for (Campaign c : campaignsForAuction) {
-			
+			bids.put(c, 0.1);
 		}
 		
 		return bids;
